@@ -28,6 +28,7 @@ public class Main {
 	public static boolean afficheeConnexion = false;
 	public static boolean afficheeInscription = false;
 	public static boolean afficheeConfirmInscription = false;
+	private static int numberCesar;
 	
     public static void main(String[] args) {
     	//je crée mon appli
@@ -161,6 +162,13 @@ public class Main {
                 		frame.remove(buttonPanel);
                 		//j'actualise mon appli
                 		frame.repaint();
+                		
+                		for (int i = 0; i < enteredPassword.length(); i++) {
+                			char caractere = enteredPassword.charAt(i);
+                			int valeurASCII = (int) caractere;
+                			numberCesar += valeurASCII;
+						}
+                		
                 	} else {
                 		errorPasswordLabel.setText("Mot de passe incorrect");
                 		errorPasswordLabel.setForeground(Color.red);
@@ -303,7 +311,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
             	Algorithme algo = new Algorithme("crypt", filename, "coucouToi");
-                algo.chooseAlgo();
+                algo.chooseAlgo(numberCesar);
             }
         });
         
@@ -311,7 +319,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
             	Algorithme algo = new Algorithme("decrypt", filename, "coucouToi");
-                algo.chooseAlgo();
+                algo.chooseAlgo(numberCesar);
             }
         });
 
