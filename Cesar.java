@@ -1,5 +1,5 @@
 package Cesar;
 
 public interface Cesar {
-	 void chooseAlgo();
+	 void chooseAlgo(int numberCesar);
 }
