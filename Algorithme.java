@@ -20,16 +20,16 @@ public class Algorithme  implements Cesar{
 	}
 	
 	 @Override
-	public void chooseAlgo() {
-		algo();
+	public void chooseAlgo(int numberCesar) {
+		algo(numberCesar);
 	}
 	
-	 private void algo() {
+	 private void algo(int numberCesar) {
         List<String> lignes = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(nameFile))) {
             String ligne;
-
+            numberCesar %= 26;
 
             // Lisez le contenu ligne par ligne
             while ((ligne = reader.readLine()) != null) {
@@ -49,9 +49,9 @@ public class Algorithme  implements Cesar{
                         // Sinon, ajoutez 5 à la valeur ASCII des autres caractères
                         int valeurASCII = (int) caractere;
                         if("crypt".equals(option)) {                        	
-                        	valeurASCII += 5;
+                        	valeurASCII += numberCesar;
                         } else {
-                        	valeurASCII -= 5;
+                        	valeurASCII -= numberCesar;
                         }
                         ligneModifiee.append((char) valeurASCII);
                     }
